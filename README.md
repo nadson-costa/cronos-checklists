@@ -3,6 +3,8 @@
 > Sistema de gestão de qualidade para empresa de APH (Atendimento Pré-Hospitalar) privado.
 
 ---
+<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
+
 
 ## O problema
 
@@ -50,25 +52,16 @@ Envia                      →     Dashboard atualizado
 
 ### Operador (mobile-first)
 
-<!-- screenshot: home do operador -->
-> Tela inicial com viatura ativa, status do plantão e botão de iniciar checklist
+<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
 
-<!-- screenshot: checklist em preenchimento -->
-> Checklist com seções colapsáveis, stepper touch-friendly e toggle de reposição
+### Gestor (desktop)
 
-<!-- screenshot: assinatura -->
-> Revisão de inconformidades e pad de assinatura digital antes do envio
+<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/845349a8-d5ce-4965-b997-760966e18813" />
+<img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/30779b72-885b-4836-9750-8255867cee82" />
+<img width="1920" height="1080" alt="4" src="https://github.com/user-attachments/assets/a9ce3276-85fb-4eae-9c2e-99c1efff6b53" />
+<img width="1920" height="1080" alt="5" src="https://github.com/user-attachments/assets/e641e5bc-74ac-4dce-95df-bac636740a08" />
+<img width="1920" height="1080" alt="6" src="https://github.com/user-attachments/assets/ece91f37-d7c9-47e2-b279-b9d9eebe6a76" />
 
-### Gestor (dashboard desktop)
-
-<!-- screenshot: dashboard visão geral -->
-> KPIs da frota, gráfico de conformidade e tabela com status de todas as viaturas
-
-<!-- screenshot: alertas -->
-> Lista de alertas de inconformidades com filtros por viatura, status e data
-
-<!-- screenshot: configuração de checklist -->
-> Tabela de itens configuráveis com sidebar de edição — sem deploy necessário para ajustes
 
 ---
 
