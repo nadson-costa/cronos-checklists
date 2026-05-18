@@ -3,7 +3,18 @@
 > Sistema de gestão de qualidade para empresa de APH (Atendimento Pré-Hospitalar) privado.
 
 ---
-<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
+
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
+
+<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
 
 
 ## O problema
@@ -52,7 +63,7 @@ Envia                      →     Dashboard atualizado
 
 ### Operador (mobile-first)
 
-<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
+<img width="1920" height="1080" alt="PORTFÓLIO - SISTEMA CRONOS" src="https://github.com/user-attachments/assets/81c0c949-8fa5-4bab-b480-674baeb400e7" />
 
 ### Gestor (desktop)
 
@@ -89,11 +100,6 @@ Envia                      →     Dashboard atualizado
                     └──────────────────┘
 ```
 
-**Dois subdomínios, uma aplicação:**
-- `app.` → interface mobile para operadores
-- `gestor.` → dashboard desktop para diretores
-
-O roteamento por subdomínio é feito no middleware do Next.js com mesma build mas grupos de rotas separados.
 
 ---
 
@@ -104,9 +110,12 @@ O roteamento por subdomínio é feito no middleware do Next.js com mesma build m
 | Frontend | Next.js 14 (App Router) · TypeScript · Tailwind CSS · shadcn/ui · Zustand |
 | Backend | Python 3.12 · FastAPI · Pydantic v2 |
 | Banco de dados | Supabase (PostgreSQL + Auth) |
+| Auth | Supabase Auth · JWT  |
 | Infra | Docker · Docker Compose · Nginx · VPS |
+| Observabilidade | Prometheus (prometheus-fastapi-instrumentator) |
 | PDF | fpdf2 (geração server-side) |
-| Auth | Supabase Auth · JWT · httpOnly cookies |
+| Testes | Pytest · pytest-asyncio |
+| Qualidade | Ruff (linting) · Mypy strict (tipagem estática) |
 
 ---
 
@@ -142,8 +151,24 @@ O frontend nunca decide se um item está `ok`, `parcial` ou `faltando`, isso é 
 No mesmo ciclo de escrita do checklist, a API gera os alertas de inconformidade. Sem job em background, sem eventual consistency.
 
 **Itens condicionais**
-Alguns itens do checklist só aparecem em contextos específicos (ex: equipamentos de evento, lacre da bolsa de medicamentos). A flag `conditional_on` no banco controla isso.
+Alguns itens do checklist só aparecem em contextos específicos (ex: equipamentos de evento, lacre da bolsa de medicamentos). A flag `conditional_on` no banco controla isso. A API valida o conjunto de itens enviados contra os que realmente eram exigidos — não todos os ativos.
 
+**Fluxo de convite sem senha**
+O diretor nunca define nem conhece a senha do operador. O convite é enviado por e-mail; o operador define a própria senha ao clicar no link, que redireciona para o frontend com tokens no fragmento de URL. Elimina o risco de senhas compartilhadas via mensagem e segue o princípio de menor privilégio.
+
+**Imutabilidade histórica de configuração**
+Alterações nos itens do checklist (adicionar, editar, desativar) afetam apenas checklists futuros. Checklists já submetidos preservam o snapshot exato dos itens do momento da submissão, garantindo rastreabilidade para auditorias.
+
+**Observabilidade com Prometheus**
+A API expõe métricas com total de requests por handler e latência por rota. Permite monitoramento em produção sem instrumentação manual nas rotas.
+
+---
+
+## Testes
+
+Suite com testes unitários (services e routers com mocks dos repositórios) e testes de integração cobrindo o fluxo completo de submissão, deleção e controle de acesso. Cobertura mínima exigida de 80%.
+
+---
 
 ## Status
 
